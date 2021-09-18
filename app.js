@@ -43,9 +43,12 @@ const colorScheme = {
 
 const theme1btn = document.getElementById('theme1'),
       theme2btn = document.getElementById('theme2'),
-      theme3btn = document.getElementById('theme3')
-const root = document.documentElement
+      theme3btn = document.getElementById('theme3'),
+      keypad = document.getElementById('keypad'),
+      screen = document.getElementById('screen'),
+      root = document.documentElement
 
+// THEME toggler
 theme1btn.addEventListener('click', () => {
   for (const color in colorScheme.theme1) {
     root.style.setProperty('--' + color, colorScheme.theme1[color])
@@ -59,5 +62,31 @@ theme2btn.addEventListener('click', () => {
 theme3btn.addEventListener('click', () => {
   for (const color in colorScheme.theme3) {
     root.style.setProperty('--' + color, colorScheme.theme3[color])
+  }
+})
+
+// the CALC 
+let prevKey = ''
+keypad.addEventListener('click', (e) => {
+  const el = e.target
+  const text = el.dataset.val
+
+  if(el.classList.contains('key')) {
+    if (text === '=' && screen.value.length) {
+      if (screen.value.includes('+') || screen.value.includes('-') || screen.value.includes('*') || screen.value.includes('/')) {
+        prevKey = '='
+      }
+      screen.value = eval(screen.value)
+    } else if (text === 'reset')
+      screen.value = ''
+    else if (text === 'del')
+      screen.value = screen.value.slice(0, -1)
+    if (text !== 'reset' && text !== 'del' && text !== '=') {
+      if (prevKey === '=') {
+        screen.value = ''
+        prevKey = ''
+      }
+      screen.value = screen.value + text
+    }
   }
 })

@@ -92,7 +92,6 @@ header {
 
 .themes input {
 	position: relative;
-	background-color: red;
 
 	margin-top: 10px;
 	cursor: pointer;
@@ -130,7 +129,7 @@ header {
 	font-family: inherit;
 	font-size: 32px;
 	text-align: right;
-	color: #fff;
+	color: var(--headerColor);
 	border: none;
 	border-radius: 15px;
 	background: var(--screenBg);
