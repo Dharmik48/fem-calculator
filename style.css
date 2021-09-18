@@ -162,10 +162,16 @@ header {
 	background-color: var(--keyBg);
 	box-shadow: 0 5px var(--keyShadow);
 	cursor: pointer;
+	-webkit-tap-highlight-color: transparent;
 }
 
 .key:focus {
 	outline: none;
+}
+
+.keypad .key:active {
+	transform: translateY(5px);
+	box-shadow: 0 0px var(--keyShadow);
 }
 
 .key.gray {
