@@ -113,6 +113,10 @@ header {
 	background-color: var(--toggleBtn);
 }
 
+.theme input:focus {
+	outline: none;
+}
+
 /* MAIN DISPLAY */
 .display {
 	width: 100%;
@@ -185,10 +189,6 @@ header {
 	color: #fff;
 	background-color: var(--toggleBtn);
 	box-shadow: 0 5px var(--redShadow);
-}
-
-.key:nth-last-child(3) {
-	font-size: 1rem;
 }
 
 .key:nth-last-child(2),
