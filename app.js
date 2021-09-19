@@ -70,7 +70,6 @@ theme3btn.addEventListener('click', () => {
 // prevent from entering alphabets
 const isNumber = (e) => {
   const charCode = e.keyCode
-  
   if (charCode != 46 && charCode > 31
     && (charCode < 48 || charCode > 57))
         return false
@@ -79,6 +78,7 @@ const isNumber = (e) => {
 }
 
 let prevKey = ''
+let prevOp = ''
 keypad.addEventListener('click', (e) => {
   const el = e.target
   const text = el.dataset.val
@@ -98,7 +98,15 @@ keypad.addEventListener('click', (e) => {
         screen.value = ''
         prevKey = ''
       }
-      screen.value = screen.value + text
+
+      if ((text !== '+' && text !== '-' && text !== '*' && text !== '/' && text !== '.')) {
+        prevOp = ''
+      }
+      
+      if (!(prevOp === '+' || prevOp === '-' || prevOp === '*' || prevOp === '/' || prevOp === '.')){
+        screen.value = screen.value + text
+        prevOp = text
+      }
     }
   }
 })
